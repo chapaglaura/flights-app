@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { ReservationService } from '../shared/reservation.service';
+import { Reservation } from '../shared/reservation.model';
 
 @Component({
   selector: 'app-reservation-form',
@@ -27,7 +29,11 @@ export class ReservationFormComponent implements OnInit {
 
   rsvInfoForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private reservationService: ReservationService
+  ) {}
 
   ngOnInit(): void {
     this.formInitialization();
@@ -90,7 +96,7 @@ export class ReservationFormComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(reservationData: Reservation) {
     this.router.navigate(['/reservation']);
   }
 }

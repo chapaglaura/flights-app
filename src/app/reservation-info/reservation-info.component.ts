@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Router } from '@angular/router';
+import { ReservationService } from '../shared/reservation.service';
 
 @Component({
   selector: 'app-reservation-info',
@@ -19,7 +19,10 @@ export class ReservationInfoComponent implements OnInit {
     rememberInfo: false,
   };
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private reservationService: ReservationService
+  ) {}
 
   ngOnInit(): void {
     this.isLoading = true;
