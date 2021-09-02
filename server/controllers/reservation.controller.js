@@ -1,6 +1,7 @@
 const db = require("../models");
 const Reservation = db.reservation;
 
+// Create a new reservation in DB
 exports.create = (req, res) => {
   if (!req.body) {
     res.status(400).send({ message: "Content can not be empty!" });
@@ -29,6 +30,7 @@ exports.create = (req, res) => {
     });
 };
 
+// Find reservation by ID in DB
 exports.findOne = (req, res) => {
   console.log(req.body);
   const id = req.params.id;
