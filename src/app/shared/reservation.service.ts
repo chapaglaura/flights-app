@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
 import { Reservation } from '../shared/reservation.model';
 
 @Injectable({
@@ -8,9 +8,11 @@ import { Reservation } from '../shared/reservation.model';
 export class ReservationService {
   private id: string = '';
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  postReservation(reservationData: Reservation) {}
+  postReservation(reservationData: Reservation) {
+    return this.http.post('/api/reservations', reservationData);
+  }
 
   getReservation() {}
 

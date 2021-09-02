@@ -100,6 +100,11 @@ export class ReservationFormComponent implements OnInit {
   }
 
   onSubmit(reservationData: Reservation) {
-    this.router.navigate(['/reservation']);
+    this.reservationService
+      .postReservation(reservationData)
+      .subscribe((resData: any) => {
+        this.reservationService.setReservationId(resData._id);
+        this.router.navigate(['/reservation']);
+      });
   }
 }
