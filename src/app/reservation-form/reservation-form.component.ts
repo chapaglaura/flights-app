@@ -70,7 +70,14 @@ export class ReservationFormComponent implements OnInit {
 
   formInitialization() {
     this.rsvInfoForm = this.fb.group({
-      rsvNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      rsvNumber: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[0-9]*$'),
+          Validators.minLength(6),
+        ],
+      ],
       lastName: [
         '',
         [Validators.required, Validators.pattern('^[a-zA-Z\\s]*$')],
@@ -83,6 +90,7 @@ export class ReservationFormComponent implements OnInit {
       }),
       rememberInfo: [''],
     });
+    console.log(this.rsvInfoForm);
   }
 
   dateHandling() {

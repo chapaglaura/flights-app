@@ -21,7 +21,7 @@
   font-weight: 400;
 }
 
-.trip-info .row {
+.trip-info > .row {
   margin-bottom: 40px;
 }
 

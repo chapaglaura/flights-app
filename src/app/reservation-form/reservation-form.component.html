@@ -3,41 +3,60 @@
         <div class="col-md-6 col-xs-12">
             <input id="rsv-number" class="form-control" type="text" formControlName="rsvNumber"
                 placeholder="Reservation number">
+            <div class="text-center" *ngIf="rsvInfoForm.get('rsvNumber')?.errors!">
+                <p *ngIf="rsvInfoForm.get('rsvNumber')?.errors!.required">Field is required.</p>
+                <p
+                    *ngIf="rsvInfoForm.get('rsvNumber')?.errors!.pattern || rsvInfoForm.get('rsvNumber')?.errors!.minlength">
+                    {{rsvInfoForm.get('rsvNumber')?.errors!.pattern ? "Field can only contain numbers." :
+                    rsvInfoForm.get('rsvNumber')?.errors!.minlength ? "Field must have at least 6 characters": null}}
+                </p>
+            </div>
         </div>
         <div class="col-md-6 col-xs-12">
             <input id="rsv-last-name" class="form-control" type="text" formControlName="lastName"
                 placeholder="Last Name on Reservation">
+            <div class="text-center" *ngIf="rsvInfoForm.get('lastName')?.errors!">
+                <p *ngIf="rsvInfoForm.get('lastName')?.errors!.required">Field is required.</p>
+                <p *ngIf="rsvInfoForm.get('lastName')?.errors!.pattern">Field can only contain letters and spaces.</p>
+            </div>
         </div>
     </div>
     <div class="row sail-info">
         <div class="col-md-6 col-xs-12">
             <label class="form-label">SHIP</label>
-            <select id="rsv-ship" class="form-control" class="form-select" formControlName="ship">
+            <select id="rsv-ship" class="form-control form-select" formControlName="ship">
                 <option value="" selected disabled>Select Ship</option>
                 <option *ngFor="let cruise of cruises;" [value]=cruise>{{cruise}}</option>
             </select>
+            <div class="text-center" *ngIf="rsvInfoForm.get('ship')?.errors!">
+                <p *ngIf="rsvInfoForm.get('ship')?.errors!.required">Field is required.</p>
+            </div>
         </div>
         <div class="col-md-6 col-xs-12">
             <div class="row" formGroupName="sailDate">
                 <label class="form-label">SAIL DATE</label>
                 <div class="col-md-4 col-xs-12">
-                    <select id="rsv-sail-month" class="form-control" type="text" formControlName="month">
+                    <select id="rsv-sail-month" class="form-control form-select" type="text" formControlName="month">
                         <option value="" selected disabled>Month</option>
                         <option *ngFor="let month of months;" [value]=month>{{month}}</option>
                     </select>
                 </div>
                 <div class="col-md-4 col-xs-12">
-                    <select id="rsv-sail-day" class="form-control" formControlName="day" placeholder="Day">
+                    <select id="rsv-sail-day" class="form-control form-select" formControlName="day" placeholder="Day">
                         <option value="" selected disabled>Day</option>
                         <option *ngFor="let day of days" [value]=day>{{day}}</option>
                     </select>
                 </div>
                 <div class="col-md-4 col-xs-12">
-                    <select id="rsv-sail-year" class="form-control" formControlName="year" placeholder="Year">
+                    <select id="rsv-sail-year" class="form-control form-select" formControlName="year"
+                        placeholder="Year">
                         <option value="" selected disabled>Year</option>
                         <option *ngFor="let year of years" [value]=year>{{year}}</option>
                     </select>
                 </div>
+            </div>
+            <div class="text-center" *ngIf="rsvInfoForm.get('sailDate')?.invalid!">
+                <p *ngIf="rsvInfoForm.get('sailDate')?.invalid!">Fields are required.</p>
             </div>
         </div>
     </div>
