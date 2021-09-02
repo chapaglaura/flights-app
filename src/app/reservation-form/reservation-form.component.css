@@ -1,28 +1,10 @@
-#trip-info-form .row {
-    margin-bottom: 40px;
-  }
-  
-  #trip-info-form input,
-  #trip-info-form select {
-    border: none;
-    border-bottom: 1px solid #ced4da;
-  }
-  
-  #trip-info-form .row.sail-info label {
-    font-weight: bold;
-  }
-  
-  #trip-info-form .row.submit-info > div {
-    display: flex;
-    justify-content: center;
-  }
-  
-  #trip-info-form input[type="checkbox"] {
-    border: 1px solid #ced4da;
-  }
-  
-  #trip-info-form .submit-btn {
-    background-color: darkblue;
-    color: white;
-  }
-  
+#trip-info-form input,
+#trip-info-form select {
+  border: none;
+  border-bottom: 1px solid #9fa4a8;
+}
+
+#trip-info-form input[type="checkbox"] {
+  border: 1px solid #ced4da;
+  margin-right: 10px;
+}
