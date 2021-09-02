@@ -1,31 +1,31 @@
 <section *ngIf="!isLoading" class="trip-info">
     <div class="row">
-        <div class="col-6"><small>Reservation Number</small>
+        <div class="col-md-6 col-xs-12"><small>Reservation Number</small>
             <p>{{rsvInfo.rsvNumber}}</p>
         </div>
-        <div class="col-6"><small>Last Name on Reservation</small>
+        <div class="col-md-6 col-xs-12"><small>Last Name on Reservation</small>
             <p>{{rsvInfo.lastName}}</p>
         </div>
     </div>
     <div class="row">
 
-        <div class="col-6">
+        <div class="col-md-6 col-xs-12">
             <div class="row sail-info">
                 <label class="form-label">SHIP</label>
                 <small>Select Ship</small>
                 <p>{{rsvInfo.ship}}</p>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-md-6 col-xs-12">
             <div class="row sail-info">
                 <label class="form-label">SAIL DATE</label>
-                <div class="col-4"><small>Month</small>
+                <div class="col-md-4 col-xs-12"><small>Month</small>
                     <p>{{rsvInfo.sailDate.month}}</p>
                 </div>
-                <div class="col-4"><small>Day</small>
+                <div class="col-md-4 col-xs-12"><small>Day</small>
                     <p>{{rsvInfo.sailDate.day}}</p>
                 </div>
-                <div class="col-4"><small>Year</small>
+                <div class="col-md-4 col-xs-12"><small>Year</small>
                     <p>{{rsvInfo.sailDate.year}}</p>
                 </div>
             </div>

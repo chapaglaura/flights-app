@@ -20,19 +20,19 @@
         <div class="col-md-6 col-xs-12">
             <div class="row" formGroupName="sailDate">
                 <label class="form-label">SAIL DATE</label>
-                <div class="col-4">
+                <div class="col-md-4 col-xs-12">
                     <select id="rsv-sail-month" class="form-control" type="text" formControlName="month">
                         <option value="" selected disabled>Month</option>
                         <option *ngFor="let month of months;" [value]=month>{{month}}</option>
                     </select>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4 col-xs-12">
                     <select id="rsv-sail-day" class="form-control" formControlName="day" placeholder="Day">
                         <option value="" selected disabled>Day</option>
                         <option *ngFor="let day of days" [value]=day>{{day}}</option>
                     </select>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4 col-xs-12">
                     <select id="rsv-sail-year" class="form-control" formControlName="year" placeholder="Year">
                         <option value="" selected disabled>Year</option>
                         <option *ngFor="let year of years" [value]=year>{{year}}</option>
