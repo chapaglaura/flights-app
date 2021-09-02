@@ -43,8 +43,11 @@ export class ReservationFormComponent implements OnInit {
 
   formInitialization() {
     this.rsvInfoForm = this.fb.group({
-      rsvNumber: ['', Validators.required],
-      lastName: ['', Validators.required],
+      rsvNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      lastName: [
+        '',
+        [Validators.required, Validators.pattern('^[a-z][a-z\\s]*$')],
+      ],
       ship: ['', Validators.required],
       sailDate: this.fb.group({
         month: ['', Validators.required],

@@ -1,6 +1,6 @@
 export class Reservation {
   public id: string;
-  public rsvNumber: string;
+  public rsvNumber: number;
   public lastName: string;
   public ship: string;
   public sailDate: { month: string; day: number; year: number };
@@ -8,7 +8,7 @@ export class Reservation {
 
   constructor(
     id: string,
-    rsvNumber: string,
+    rsvNumber: number,
     lastName: string,
     ship: string,
     sailDate: { month: string; day: number; year: number },
