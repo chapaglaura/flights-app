@@ -40,7 +40,7 @@ export class ReservationFormComponent implements OnInit {
   ngOnInit(): void {
     this.formInitialization();
 
-    if (this.reservationService.getRememberedRsv()) {
+    if (this.reservationService.getRememberedId()) {
       this.reservationService.getReservation().subscribe(
         (resData: any) => {
           console.log(resData);

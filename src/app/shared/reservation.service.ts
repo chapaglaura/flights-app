@@ -25,7 +25,7 @@ export class ReservationService {
     this.rememberId = remember;
   }
 
-  getRememberedRsv() {
+  getRememberedId() {
     if (this.rememberId) {
       return this.postedId;
     } else {

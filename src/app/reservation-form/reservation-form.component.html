@@ -3,7 +3,8 @@
         <div class="col-md-6 col-xs-12">
             <input id="rsv-number" class="form-control" type="text" formControlName="rsvNumber"
                 placeholder="Reservation number">
-            <div class="text-center" *ngIf="rsvInfoForm.get('rsvNumber')?.errors!">
+            <div class="text-center"
+                *ngIf="rsvInfoForm.get('rsvNumber')?.errors! && rsvInfoForm.get('rsvNumber')?.touched">
                 <p *ngIf="rsvInfoForm.get('rsvNumber')?.errors!.required">Field is required.</p>
                 <p
                     *ngIf="rsvInfoForm.get('rsvNumber')?.errors!.pattern || rsvInfoForm.get('rsvNumber')?.errors!.minlength">
@@ -15,7 +16,8 @@
         <div class="col-md-6 col-xs-12">
             <input id="rsv-last-name" class="form-control" type="text" formControlName="lastName"
                 placeholder="Last Name on Reservation">
-            <div class="text-center" *ngIf="rsvInfoForm.get('lastName')?.errors!">
+            <div class="text-center"
+                *ngIf="rsvInfoForm.get('lastName')?.errors! && rsvInfoForm.get('lastName')?.touched">
                 <p *ngIf="rsvInfoForm.get('lastName')?.errors!.required">Field is required.</p>
                 <p *ngIf="rsvInfoForm.get('lastName')?.errors!.pattern">Field can only contain letters and spaces.</p>
             </div>
@@ -28,7 +30,7 @@
                 <option value="" selected disabled>Select Ship</option>
                 <option *ngFor="let cruise of cruises;" [value]=cruise>{{cruise}}</option>
             </select>
-            <div class="text-center" *ngIf="rsvInfoForm.get('ship')?.errors!">
+            <div class="text-center" *ngIf="rsvInfoForm.get('ship')?.errors! && rsvInfoForm.get('ship')?.touched">
                 <p *ngIf="rsvInfoForm.get('ship')?.errors!.required">Field is required.</p>
             </div>
         </div>
@@ -55,7 +57,8 @@
                     </select>
                 </div>
             </div>
-            <div class="text-center" *ngIf="rsvInfoForm.get('sailDate')?.invalid!">
+            <div class="text-center"
+                *ngIf="rsvInfoForm.get('sailDate')?.invalid! && rsvInfoForm.get('sailDate')?.touched">
                 <p *ngIf="rsvInfoForm.get('sailDate')?.invalid!">Fields are required.</p>
             </div>
         </div>
