@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
@@ -26,7 +27,7 @@ export class ReservationFormComponent implements OnInit {
 
   rsvInfoForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.formInitialization();
@@ -89,5 +90,7 @@ export class ReservationFormComponent implements OnInit {
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    this.router.navigate(['/reservation']);
+  }
 }

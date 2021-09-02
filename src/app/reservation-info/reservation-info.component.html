@@ -1,1 +1,36 @@
-<p>reservation-info works!</p>
+<section *ngIf="!isLoading" id="trip-info">
+    <div class="row">
+        <div class="col-6"><small>Reservation Number</small>
+            <p>{{rsvInfo.rsvNumber}}</p>
+        </div>
+        <div class="col-6"><small>Last Name on Reservation</small>
+            <p>{{rsvInfo.lastName}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6"><small>Select Ship</small>
+            <p>{{rsvInfo.ship}}</p>
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col-4"><small>Month</small>
+                    <p>{{rsvInfo.sailDate.month}}</p>
+                </div>
+                <div class="col-4"><small>Day</small>
+                    <p>{{rsvInfo.sailDate.day}}</p>
+                </div>
+                <div class="col-4"><small>Year</small>
+                    <p>{{rsvInfo.sailDate.year}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row submit-info">
+        <div class="col-12">
+            <button (click)="editReservation()" class="btn submit-btn" type="submit">EDIT
+                INFORMATION</button>
+        </div>
+
+    </div>
+</section>
+<p *ngIf="isLoading">Loading information...</p>

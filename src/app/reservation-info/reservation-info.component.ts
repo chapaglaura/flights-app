@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-reservation-info',
   templateUrl: './reservation-info.component.html',
@@ -17,11 +19,13 @@ export class ReservationInfoComponent implements OnInit {
     rememberInfo: false,
   };
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.isLoading = true;
   }
 
-  editReservation() {}
+  editReservation() {
+    this.router.navigate(['/']);
+  }
 }
