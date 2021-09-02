@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReservationService } from '../shared/reservation.service';
+import { Reservation } from '../shared/reservation.model';
 
 @Component({
   selector: 'app-reservation-info',
   templateUrl: './reservation-info.component.html',
-  styleUrls: ['./reservation-info.component.css'],
+  styleUrls: ['../app.component.css', './reservation-info.component.css'],
 })
 export class ReservationInfoComponent implements OnInit {
   isLoading: boolean = false;
 
-  rsvInfo = {
+  rsvInfo: Reservation = {
     id: '',
     rsvNumber: '',
     lastName: '',
@@ -26,6 +27,29 @@ export class ReservationInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = true;
+
+    this.reservationService.getReservation().subscribe(
+      (resData: any) => {
+        console.log(resData);
+        this.isLoading = false;
+        this.rsvInfo = {
+          id: resData._id,
+          rsvNumber: resData.number,
+          lastName: resData.lastName,
+          ship: resData.ship,
+          sailDate: {
+            month: resData.sailDate.month,
+            day: resData.sailDate.day,
+            year: resData.sailDate.year,
+          },
+          rememberInfo: resData.rememberInfo,
+        };
+      },
+      (err) => {
+        console.log(err);
+        this.router.navigate(['/']);
+      }
+    );
   }
 
   editReservation() {

@@ -7,7 +7,7 @@ import { Reservation } from '../shared/reservation.model';
 @Component({
   selector: 'app-reservation-form',
   templateUrl: './reservation-form.component.html',
-  styleUrls: ['./reservation-form.component.css'],
+  styleUrls: ['../app.component.css', './reservation-form.component.css'],
 })
 export class ReservationFormComponent implements OnInit {
   months: string[] = [
@@ -27,6 +27,8 @@ export class ReservationFormComponent implements OnInit {
   days: number[] = [];
   years: number[] = [];
 
+  cruises: string[] = ['Summit', 'Millennium', 'Equinox', 'Constellation'];
+
   rsvInfoForm!: FormGroup;
 
   constructor(
@@ -38,6 +40,31 @@ export class ReservationFormComponent implements OnInit {
   ngOnInit(): void {
     this.formInitialization();
 
+    if (this.reservationService.getRememberedRsv()) {
+      this.reservationService.getReservation().subscribe(
+        (resData: any) => {
+          console.log(resData);
+          if (resData) {
+            this.rsvInfoForm.patchValue({
+              rsvNumber: resData.number,
+              lastName: resData.lastName,
+              ship: resData.ship,
+              sailDate: {
+                month: resData.sailDate.month,
+                day: resData.sailDate.day,
+                year: resData.sailDate.year,
+              },
+              rememberInfo: resData.rememberInfo,
+            });
+          }
+        },
+        (err) => {
+          console.log(err);
+          this.router.navigate(['/']);
+        }
+      );
+    }
+
     this.dateHandling();
   }
 
@@ -46,7 +73,7 @@ export class ReservationFormComponent implements OnInit {
       rsvNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       lastName: [
         '',
-        [Validators.required, Validators.pattern('^[a-z][a-z\\s]*$')],
+        [Validators.required, Validators.pattern('^[a-zA-Z\\s]*$')],
       ],
       ship: ['', Validators.required],
       sailDate: this.fb.group({
@@ -71,6 +98,7 @@ export class ReservationFormComponent implements OnInit {
     form.get('sailDate')!.valueChanges.subscribe((value) => {
       let m: number = this.months.indexOf(value.month);
       let y: number = Number(value.year);
+      let d: number = Number(value.day);
 
       if (!y && m !== -1) {
         y = currentYear;
@@ -103,7 +131,7 @@ export class ReservationFormComponent implements OnInit {
     this.reservationService
       .postReservation(reservationData)
       .subscribe((resData: any) => {
-        this.reservationService.setReservationId(resData._id);
+        this.reservationService.setPostedId(resData._id, resData.rememberInfo);
         this.router.navigate(['/reservation']);
       });
   }

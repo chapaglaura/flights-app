@@ -6,17 +6,30 @@ import { Reservation } from '../shared/reservation.model';
   providedIn: 'root',
 })
 export class ReservationService {
-  private id: string = '';
+  private postedId: string = '';
+  private rememberId: boolean = false;
 
   constructor(private http: HttpClient) {}
 
   postReservation(reservationData: Reservation) {
+    console.log(reservationData);
     return this.http.post('/api/reservations', reservationData);
   }
 
-  getReservation() {}
+  getReservation() {
+    return this.http.get(`/api/reservations/${this.postedId}`);
+  }
 
-  setReservationId(id: string) {
-    this.id = id;
+  setPostedId(id: string, remember: boolean) {
+    this.postedId = id;
+    this.rememberId = remember;
+  }
+
+  getRememberedRsv() {
+    if (this.rememberId) {
+      return this.postedId;
+    } else {
+      return 0;
+    }
   }
 }
