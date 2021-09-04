@@ -43,7 +43,6 @@ export class ReservationFormComponent implements OnInit {
     if (this.reservationService.getRememberedId()) {
       this.reservationService.getReservation().subscribe(
         (resData: any) => {
-          console.log(resData);
           if (resData) {
             this.rsvInfoForm.patchValue({
               rsvNumber: resData.number,
@@ -90,7 +89,6 @@ export class ReservationFormComponent implements OnInit {
       }),
       rememberInfo: [''],
     });
-    console.log(this.rsvInfoForm);
   }
 
   dateHandling() {

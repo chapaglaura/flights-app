@@ -12,12 +12,16 @@ export class ReservationService {
   constructor(private http: HttpClient) {}
 
   postReservation(reservationData: Reservation) {
-    console.log(reservationData);
-    return this.http.post('/api/reservations', reservationData);
+    return this.http.post(
+      'http://localhost:8080/api/reservations',
+      reservationData
+    );
   }
 
   getReservation() {
-    return this.http.get(`/api/reservations/${this.postedId}`);
+    return this.http.get(
+      `http://localhost:8080/api/reservations/${this.postedId}`
+    );
   }
 
   setPostedId(id: string, remember: boolean) {

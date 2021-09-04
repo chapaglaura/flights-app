@@ -27,10 +27,8 @@ export class ReservationInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = true;
-
     this.reservationService.getReservation().subscribe(
       (resData: any) => {
-        console.log(resData);
         this.isLoading = false;
         this.rsvInfo = {
           id: resData._id,
